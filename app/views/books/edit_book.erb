@@ -1,0 +1,20 @@
+<h1>Edit a Book</h1>
+<p>Give us some information about the book you want to sell.</p>
+<form action="/books" method="post">
+  <label>Title:</label>
+  <input type="text" name="title" value="<%=@book.title%>">
+  <br></br>
+  <label>Author:</label>
+  <input type="text" name="author" value="<%=@book.author%>">
+  <br></br>
+  <label>Description:</label>
+  <input type="text" name="description" value="<%=@book.description%>">
+  <br></br>
+  <label>Price:</label>
+  <input type="text" name="price" value="<%=@book.price%>">
+  <br></br>
+  <label>Availability:</label>
+  <input type="text" name="availability" value="<%=@book.availability%>">
+  <br></br>
+  <input type="submit" value="Edit Book">
+</form>
