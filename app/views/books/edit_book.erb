@@ -1,20 +1,21 @@
 <h1>Edit a Book</h1>
 <p>Give us some information about the book you want to sell.</p>
 <form action="/books" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
   <label>Title:</label>
-  <input type="text" name="title" value="<%=@book.title%>">
+  <input type="text" name="book[title]" value="<%=@book.title%>">
   <br></br>
   <label>Author:</label>
-  <input type="text" name="author" value="<%=@book.author%>">
+  <input type="text" name="book[author]" value="<%=@book.author%>">
   <br></br>
   <label>Description:</label>
-  <input type="text" name="description" value="<%=@book.description%>">
+  <input type="text" name="book[description]" value="<%=@book.description%>">
   <br></br>
   <label>Price:</label>
-  <input type="text" name="price" value="<%=@book.price%>">
+  <input type="text" name="book[price]" value="<%=@book.price%>">
   <br></br>
   <label>Availability:</label>
-  <input type="text" name="availability" value="<%=@book.availability%>">
+  <input type="text" name="book[availability]" value="<%=@book.availability%>">
   <br></br>
   <input type="submit" value="Edit Book">
 </form>
