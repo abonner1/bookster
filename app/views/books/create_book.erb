@@ -2,19 +2,19 @@
 <p>Give us some information about the book you want to sell.</p>
 <form action="/books" method="post">
   <label>Title:</label>
-  <input type="text" name="title">
+  <input type="text" name="book[title]">
   <br></br>
   <label>Author:</label>
-  <input type="text" name="author">
+  <input type="text" name="book[author]">
   <br></br>
   <label>Description:</label>
-  <input type="text" name="description">
+  <input type="text" name="book[description]">
   <br></br>
   <label>Price:</label>
-  <input type="text" name="price">
+  <input type="text" name="book[price]">
   <br></br>
   <label>Availability:</label>
-  <input type="text" name="availability">
+  <input type="text" name="book[availability]">
   <br></br>
   <input type="submit" value="Add Book">
 </form>
