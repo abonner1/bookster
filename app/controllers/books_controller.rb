@@ -8,16 +8,18 @@ class BooksController < ApplicationController
 
   # new action
   get '/books/new' do
-
+    erb :'/books/create_book'
   end
 
   post '/books' do
-
+    @book = Book.create(params)
+    redirect to "/books/#{book.id}"
   end
 
   # show action
   get '/books/:id' do
-
+    @book = Book.find_by_id(params[:id])
+    erb :'/books/show'
   end
 
   # edit action
@@ -31,7 +33,7 @@ class BooksController < ApplicationController
 
   # delete action
   delete '/books/:id/delete' do
-    
+
   end
 
 end
