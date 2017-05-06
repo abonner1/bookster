@@ -9,4 +9,8 @@ class ApplicationController < Sinatra::Base
     # get :session_secret, "bookseller"
   end
 
+  get '/' do
+    erb :index
+  end
+
 end
