@@ -1,5 +1,5 @@
 <ul>
   <%@books.each do |book|%>
-  <li><a href="/books/<%=book.id%>"><%=book.title%></a></li>
+  <li><a href="/books/<%=book.id%>"><%=book.title%></a> - $<%="%.02f" % book.price%></li>
   <%end%>
 </ul>
