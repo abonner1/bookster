@@ -50,7 +50,6 @@ class BooksController < ApplicationController
 
   patch '/books/:id' do
     book = Book.find_by_id(params[:id])
-    binding.pry
     book.update(params[:book])
     redirect to "/books/#{book.id}"
   end
