@@ -6,9 +6,9 @@
   </head>
   <body>
     <%if logged_in?%>
-    <p><a href="/books">Home</a> - <a href="/users/<%=current_user.slug%>"><%=current_user.slug%></a> - <a href="/logout">Log Out</a></p>
+    <div><a href="/books">Home</a> - <a href="/users/<%=current_user.slug%>"><%=current_user.slug%></a> - <a href="/logout">Log Out</a></div>
     <%else%>
-    <p><a href="/login">Log In</a> - <a href="/">Home</a> - <a href="/signup">Sign Up</a></p>
+    <div><a href="/login">Log In</a> - <a href="/">Home</a> - <a href="/signup">Sign Up</a></div>
     <%end%>
 
     <%= yield %>
