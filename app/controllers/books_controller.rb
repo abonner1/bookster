@@ -26,14 +26,22 @@ class BooksController < ApplicationController
 
   # show action
   get '/books/:id' do
-    @book = Book.find_by_id(params[:id])
-    erb :'/books/show_book'
+    if logged_in?
+      @book = Book.find_by_id(params[:id])
+      erb :'/books/show_book'
+    else
+      redirect to '/login'
+    end
   end
 
   # edit action
   get '/books/:id/edit' do
-    @book = Book.find_by_id(params[:id])
-    erb :'/books/edit_book'
+    if logged_in?
+      @book = Book.find_by_id(params[:id])
+      erb :'/books/edit_book'
+    else
+      redirect '/login'
+    end
   end
 
   patch '/books/:id' do
@@ -44,9 +52,12 @@ class BooksController < ApplicationController
 
   # delete action
   delete '/books/:id/delete' do
-    @book = Book.find_by_id(params[:id])
-    @book.delete
-    redirect '/books'
+    book = current_user.books.find_by_id(params[:id])
+    if book && book.destroy
+      redirect '/books'
+    else
+      redirect to "/books/#{book.id}"
+    end
   end
 
 end
