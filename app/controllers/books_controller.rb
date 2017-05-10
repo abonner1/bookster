@@ -20,8 +20,12 @@ class BooksController < ApplicationController
   end
 
   post '/books' do
-    @book = current_user.books.create(params[:book])
-    redirect to "/books/#{@book.id}"
+    book = current_user.books.create(params[:book])
+    if book.valid?
+      redirect to "/books/#{@book.id}"
+    else
+      redirect to '/books/new'
+    end
   end
 
   # show action
