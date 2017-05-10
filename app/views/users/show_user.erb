@@ -4,6 +4,9 @@
   <ul>
     <li>Email: <%=@user.email%></li>
   </ul>
+  <form action="/users/<%=@user.slug%>/edit">
+    <input type="submit" value="Edit User">
+  </form>
 </div>
 <div class="users_books">
   <h3>User's Books:</h3>

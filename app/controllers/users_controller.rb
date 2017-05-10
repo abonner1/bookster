@@ -39,7 +39,30 @@ class UsersController < ApplicationController
 
   get '/users/:slug' do
     @user = User.find_by_slug(params[:slug])
-    erb :'/users/show_user'
+    if @user && @user == current_user
+      erb :'/users/show_user'
+    else
+      redirect to '/login'
+    end
+  end
+
+  get '/users/:slug/edit' do
+    @user = User.find_by_slug(params[:slug])
+    if @user && @user == current_user
+      erb :'/users/edit_user'
+    else
+      redirect to '/login'
+    end
+  end
+
+  patch '/users/:slug' do
+    user = User.find_by_slug(params[:slug])
+    if user.authenticate(params[:password])
+      user.update(params[:user])
+      redirect to "/users/#{user.slug}"
+    else
+      redirect to "/users/#{user.slug}/edit"
+    end
   end
 
   get '/logout' do

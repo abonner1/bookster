@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :books
   has_secure_password
 
-  validates :username, :email, :password, presence: true
+  validates_presence_of :username, :email, :password_digest
 
   extend Slugifiable::ClassMethods
   include Slugifiable::InstanceMethods
