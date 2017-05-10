@@ -7,6 +7,8 @@
   <body>
     <%if logged_in?%>
     <p><a href="/">Home</a> - <a href="/books">Books</a> - <a href="/users/<%=current_user.slug%>"><%=current_user.slug%></a> - <a href="/logout">Log Out</a></p>
+    <%else%>
+    <p><a href="/login">Log In</a> - <a href="/">Home</a> - <a href="/signup">Sign Up</a></p>
     <%end%>
 
     <%= yield %>
