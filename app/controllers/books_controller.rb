@@ -22,7 +22,7 @@ class BooksController < ApplicationController
   post '/books' do
     book = current_user.books.create(params[:book])
     if book.valid?
-      redirect to "/books/#{@book.id}"
+      redirect to "/books/#{book.id}"
     else
       redirect to '/books/new'
     end
@@ -49,9 +49,9 @@ class BooksController < ApplicationController
   end
 
   patch '/books/:id' do
-    @book = Book.find_by_id(params[:id])
-    @book.update(params[:book])
-    redirect to "/books/#{@book.id}"
+    book = Book.find_by_id(params[:id])
+    book.update(params[:book])
+    redirect to "/books/#{book.id}"
   end
 
   # delete action

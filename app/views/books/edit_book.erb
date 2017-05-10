@@ -1,6 +1,6 @@
 <h1>Edit a Book</h1>
 <p>Give us some information about the book you want to sell.</p>
-<form action="/books" method="post">
+<form action="/books/<%=@book.id%>" method="post">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <label>Title:</label>
   <input type="text" name="book[title]" value="<%=@book.title%>">

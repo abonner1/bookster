@@ -1,5 +1,8 @@
-<ul>
-  <%@books.each do |book|%>
-  <li><a href="/books/<%=book.id%>"><%=book.title%></a> - $<%="%.02f" % book.price%></li>
-  <%end%>
-</ul>
+<div class="books">
+  <h3>Available Books</h3>
+  <ul>
+    <%@books.each do |book|%>
+    <li><a href="/books/<%=book.id%>"><%=book.title%></a> - $<%="%.02f" % book.price%></li>
+    <%end%>
+  </ul>
+</div>
