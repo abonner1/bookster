@@ -15,7 +15,7 @@
   <input type="text" name="book[description]" value="<%=@book.description%>">
   <br></br>
   <label>Price:</label>
-  <input type="text" name="book[price]" value="<%=@book.price%>">
+  <input type="text" name="book[price]" value="<%='%.02f' % @book.price%>">
   <br></br>
   <label>Availability:</label>
   <input type="text" name="book[availability]" value="<%=@book.availability%>">
