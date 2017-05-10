@@ -9,10 +9,11 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if !params.values.all? {|value| !value.blank?}
+    user = User.new(params[:user])
+    if !user.valid?
       redirect to '/signup'
     else
-      user = User.find_or_create_by(params[:user])
+      user.save
       session[:user_id] = user.id
       redirect to '/books'
     end
