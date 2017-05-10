@@ -18,4 +18,8 @@ class UsersController < ApplicationController
       redirect to '/books'
     end
   end
+
+  get '/login' do
+    erb :'/users/login'
+  end
 end
