@@ -12,7 +12,7 @@
     <li>Author: <%=@book.author%></li>
     <li>Copyright: <%=@book.copyright%></li>
     <li>Description: <%=@book.description%></li>
-    <li>Price: $<%=@book.price%></li>
+    <li>Price: $<%="%.02f" % book.price%></li>
     <li>Availability: <%=@book.availability%></li>
   </ul>
 </div>
