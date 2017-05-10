@@ -2,18 +2,26 @@ class BooksController < ApplicationController
 
   # index action
   get '/books' do
-    @books = Book.all
-    erb :'/books/index'
+    if logged_in?
+      @books = Book.all
+      erb :'/books/index'
+    else
+      redirect to '/login'
+    end
   end
 
   # new action
   get '/books/new' do
-    erb :'/books/create_book'
+    if logged_in?
+      erb :'/books/create_book'
+    else
+      redirect to '/login'
+    end
   end
 
   post '/books' do
-    @book = Book.create(params[:book])
-    redirect to "/books/#{book.id}"
+    @book = current_user.books.create(params[:book])
+    redirect to "/books/#{@book.id}"
   end
 
   # show action
