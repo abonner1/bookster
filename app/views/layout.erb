@@ -13,5 +13,10 @@
 
     <%= yield %>
 
+    <br>
+    <%if flash.has?(:error)%>
+      <%=flash[:error]%>
+    <%end%>
+
   </body>
 </html>
