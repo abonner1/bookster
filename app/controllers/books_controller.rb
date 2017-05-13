@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class BooksController < ApplicationController
+  use Rack::Flash
 
   # index action
   get '/books' do
@@ -24,6 +27,7 @@ class BooksController < ApplicationController
     if book.valid?
       redirect to "/books/#{book.id}"
     else
+      flash[:error] = "Uh oh! Something wasn't filled in!\nTitle, author, priace, and availability are all required."
       redirect to '/books/new'
     end
   end
