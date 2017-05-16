@@ -13,13 +13,12 @@ class UsersController < ApplicationController
 
   post '/signup' do
     user = User.new(params[:user])
-    if !user.valid?
-      flash[:error] = "Uh oh! Something wasn't filled in!\nEmail, username, and password are all required."
-      redirect to '/signup'
-    else
-      user.save
+    if user.save
       session[:user_id] = user.id
       redirect to '/books'
+    else
+      flash[:error] = user.errors.full_messages.join(', ')
+      redirect to '/signup'
     end
   end
 

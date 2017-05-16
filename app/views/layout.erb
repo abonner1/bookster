@@ -11,12 +11,13 @@
     <div><a href="/login">Log In</a> - <a href="/">Home</a> - <a href="/signup">Sign Up</a></div>
     <%end%>
 
-    <%= yield %>
-
-    <br>
     <%if flash.has?(:error)%>
       <%=flash[:error]%>
     <%end%>
+
+    <%= yield %>
+
+    <br>
 
   </body>
 </html>

@@ -5,12 +5,9 @@ class BooksController < ApplicationController
 
   # index action
   get '/books' do
-    if logged_in?
-      @books = Book.all
-      erb :'/books/index'
-    else
-      redirect to '/login'
-    end
+    authenticate_user
+    @books = Book.all
+    erb :'/books/index'
   end
 
   # new action
@@ -23,32 +20,30 @@ class BooksController < ApplicationController
   end
 
   post '/books' do
-    book = current_user.books.create(params[:book])
-    if book.valid?
+    book = current_user.books.build(params[:book])
+    if book.valid? && book.save
       redirect to "/books/#{book.id}"
     else
-      flash[:error] = "Uh oh! Something wasn't filled in!\nTitle, author, priace, and availability are all required."
+      flash[:error] = book.errors.full_messages.join(', ')
       redirect to '/books/new'
     end
   end
 
   # show action
   get '/books/:id' do
-    if logged_in?
-      @book = Book.find_by_id(params[:id])
-      erb :'/books/show_book'
-    else
-      redirect to '/login'
-    end
+    authenticate_user
+    @book = Book.find_by_id(params[:id])
+    erb :'/books/show_book'
   end
 
   # edit action
   get '/books/:id/edit' do
-    if logged_in?
-      @book = Book.find_by_id(params[:id])
+    authenticate_user
+    @book = Book.find_by_id(params[:id])
+    if current_user == @book.user
       erb :'/books/edit_book'
     else
-      redirect '/login'
+      redirect '/books'
     end
   end
 

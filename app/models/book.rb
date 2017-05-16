@@ -1,5 +1,5 @@
 class Book < ActiveRecord::Base
   belongs_to :user
 
-  validates_presence_of :title, :author, :price, :availability
+  validates :title, :author, :price, :availability, presence: true
 end
